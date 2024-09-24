@@ -1,0 +1,67 @@
+#cardsOuterContainer {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#cardsInnerContainer {
+  height: inherit;
+  width: 700px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 30px;
+  flex-direction: column;
+}
+
+#cardCounter {
+  font-size: 1.5rem;
+  color: #0B0B0C;
+}
+
+.card {
+  min-height: 150px;
+  width: 700px;
+  font-size: 1.8rem;
+  background-color: #0B0B0C;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px;
+}
+
+#answerCardHandler, #nextCard {
+  height: auto;
+  width: auto;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border: 1px solid #0B0B0C;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+#answerCard {
+  min-height: 100px;
+  width: 700px;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#cardHandlersContainer {
+  height: 70px;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

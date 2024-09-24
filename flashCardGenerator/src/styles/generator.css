@@ -1,0 +1,126 @@
+
+#generatorOuterContainer {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#generatorInnerContainer {
+  height: auto;
+  width: auto;
+  /* remove if magamit kita form ha generator*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin-top: 20px; */
+}
+
+#sectionOne {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+#sectionTwo {
+  height: auto;
+  width: auto;
+}
+
+#cardContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+#titleInputField {
+  height: 70px;
+  width: 550px;
+  padding-left: 15px;
+  font-size: 1.5rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: 1px solid black;
+}
+
+#nextButton {
+  height: 70px;
+  width: 330px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #0B0B0C;
+  color: white;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#cardNumber {
+  height: 70px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B0B0C;
+  color: white;
+  font-size: 2.5rem;
+  margin: 15px 15px 0 0;
+  border-radius: 8px;
+}
+
+#deleteCard {
+  height: 70px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B0B0C;
+  color: white;
+  font-size: 2.5rem;
+  margin: 15px 0 0 15px;
+  border-radius: 8px;
+}
+
+#card {
+  height: 400px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+#flashCardForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#cardQuestion, #cardAnswer {
+  font-size: 1.5rem;
+  padding: 15px 0 0 15px;
+  border-radius: 8px;
+}
+
+#addCard {
+  font-size: 5rem;
+  background: none;
+  border: none;
+}
+
+#horizontalLine {
+  height: 7px;
+  width: 550px;
+  background-color: #0B0B0C;
+}

@@ -1,0 +1,19 @@
+
+#navLayout {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navLinks {
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: #0B0B0C;
+  margin: 0 20px 0 20px;
+}
+
+
+
