@@ -1,6 +1,6 @@
 LFG
   sept 16
-  todo (progress) - start working with flash cards generator
+  todo (done) - start working with flash cards generator
   todo (done) - make components
   todo (done) - work with nav
   todo (done) - create db
@@ -10,7 +10,7 @@ LFG
   todo (done) - create card number on the left side
   todo (done) - create card delete button on the right side 
   todo (done) - insert cards to db
-  todo (progress) - show in category
+  todo (done) - show in category
   todo - user auth with firebase and save in local also
 
   sept 18
@@ -24,16 +24,22 @@ LFG
 
   todo (done) - ngan dapat for instance mayda kita 1, 2, 3 cards ngan if iya ig delete it card 2 magiging 1, 2 dri 1, 3 :))
   
-  todo (done)- dapat pati value it qa mawawara if mag delete hit card
-  todo - make a repo for this projet :))
+  todo (done) - dapat pati value it qa mawawara if mag delete hit card
+  todo (done) - make a repo for this projet :))
 
   sept 20
-  todo - dapat it url after mag click hin category dapat makikita didto liwat it ngaran it set of cards para purpose if gusto niya ig share iya flashcards via url pwedi.
+  todo (look up to this later on) - dapat it url after mag click hin category dapat makikita didto liwat it ngaran it set of cards para purpose if gusto niya ig share iya flashcards via url pwedi.
 
   sept 23
-  todo - finish remaining todo 
-  todo (done)- isipa if anut maupay na approach, if ma via url ba or bagat dri
+  todo (done) - finish remaining todo 
+  todo (done) - isipa if anut maupay na approach, if ma via url ba or bagat dri
   so it plano is by using dynamic approach via url gamit react router dom, observe nala ha categories ngan cards na components
 
   sept 24
-  todo (progress) - fix ui ha show flash cards pati himo functionality like delete caterogy
+  todo (done) - fix ui ha show flash cards pati himo functionality like delete caterogy
+
+  sept 25
+  todo (progress) - create login ui
+  todo (progress) - work with firebase as a baas
+
+  setp 26 work with sept 25
