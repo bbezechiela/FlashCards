@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { firebaseApp } from "../firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { StatusProps } from "./Interfaces";
 import '../styles/categories.css';
 
 interface Cards {
@@ -17,20 +20,30 @@ interface Cards {
   answer: string,
 }
 
-const Categories = () => {
+const Categories: React.FC<StatusProps> = ({ setStatus }) => {
   const [getCategories, setCategories] = useState<Cards[]>([]); 
   const useNav = useNavigate();
   
   useEffect(() => {
-    (async (): Promise<void> => {
-      const getter = await fetch(`http://localhost:2020/getAllSetCards`, {
-        method: 'GET',
-      });
-
-      const response = await getter.json();
-      setCategories(response.message);
-    })();
+    const auth = getAuth(firebaseApp);
+    onAuthStateChanged(auth, (user) => {
+      if (user !== null) {
+        setStatus(true);
+        getter(user.uid);
+      } else {
+        useNav('/', { replace: true });
+      }
+    });
   }, []);
+  
+  const getter = async (uid: string): Promise<void> => {
+    const getter = await fetch(`http://localhost:2020/getAllSetCards?uid=${uid}`, {
+      method: 'GET',
+    });
+
+    const response = await getter.json();
+    setCategories(response.message);
+  };
 
   const showCards = async (cardId: number, categoryName: string): Promise<void> => {
     useNav(`/categories/${categoryName}/${cardId}`, { replace: true });
@@ -56,12 +69,12 @@ const Categories = () => {
   return (
     <div id='categoryOuterContainer'>
       <div id="categoryInnerContainer">
-      {getCategories.map((e, index) => (
+      {getCategories.length !== 0 ? getCategories.map((e, index) => (
           <div className='categoryItem' key={index} onClick={() => showCards(e.category_id, e.category_name)}>
             <div className="categoryName">{e.category_name}</div>
             <FontAwesomeIcon onClick={(element) => deleteCard(element, e.category_id, index)} className="categoryDelete" icon={faTrashCan} style={{color: "#ffffff",}} />
           </div>
-        ))}
+        )): <div>Create cards first :)</div>}
       </div>
     </div>
   );

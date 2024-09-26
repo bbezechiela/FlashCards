@@ -40,16 +40,31 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
+app.post('/createUserLocal', (req, res) => {
+  const {uid, displayName, email, photoURL} = req.body;  
+  const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
+
+  conn.query(`SELECT uid FROM user WHERE uid = '${uid}'`, (err, result) => {
+    if (err) throw err;
+    if (result.length === 0) {
+      conn.query(insertQuery, (err) => {
+        if (err) throw err;
+        res.json({message: 'user created localy'});
+      })
+    }
+  });
+});
+
 app.post('/createCards', (req, res) => {
   conn.query = util.promisify(conn.query);
-  let arr = req.body;
+  let data = req.body;
 
   (async () => {
-    const firstQuery = await conn.query(`INSERT INTO category (user_id, category_name, number_of_cards, category_status, category_timestamp) VALUES (1, '${arr.title}', ${arr.numberOfCards},'active', '${getDate()}')`).then((result) => { return [result.insertId] });
+    const firstQuery = await conn.query(`INSERT INTO category (uid, category_name, number_of_cards, category_status, category_timestamp) VALUES ('${data.uid}', '${data.title}', ${data.numberOfCards}, 'active', '${getDate()}')`).then((result) => { return [result.insertId] });
 
     firstQuery.map((e) => {
-      for (let i of arr.allCards) {
-        conn.query(`INSERT INTO category_QA (category_id, user_id, question, answer, qa_timestamp) VALUES (${e}, 5, '${i.cardQuestion}', '${i.cardAnswer}', '${getDate()}')`, (err) => {
+      for (let i of data.allCards) {
+        conn.query(`INSERT INTO category_QA (category_id, uid, question, answer, qa_timestamp) VALUES (${e}, '${data.uid}', '${i.cardQuestion}', '${i.cardAnswer}', '${getDate()}')`, (err) => {
           if (err) throw err;
         });
       }
@@ -60,7 +75,9 @@ app.post('/createCards', (req, res) => {
 });
 
 app.get('/getAllSetCards', (req, res) => {
-  conn.query('SELECT * FROM category WHERE category_id > 0', (err, result) => {
+  const uid = req.query.uid;
+
+  conn.query(`SELECT * FROM category WHERE uid = '${uid}'`, (err, result) => {
     if (err) throw err;
     res.json({message: result});
   });
@@ -69,15 +86,12 @@ app.get('/getAllSetCards', (req, res) => {
 app.get('/getCards', (req, res) => {
   const cardId = req.query.cardId;
 
-  console.log(cardId);
   conn.query(`SELECT * FROM category_QA WHERE category_id = ${cardId}`, (err, result) => {
     if (err) throw err;
-
     for (let i = result.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [result[i], result[j]] = [result[j], result[i]];
     }
-
     console.log(result);
     res.json({message: result})
   });

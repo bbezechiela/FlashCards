@@ -1,11 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { firebaseApp } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { UserDetails, StatusProps } from './Interfaces';
 import '../styles/generator.css';
 
-const Generator = () => {
+const Generator: React.FC<StatusProps> = ({ setStatus }) => {
   const [getTitle, setTitle] = useState<string>(''); 
   const [counter, setCounter] = useState<number>(1);
   const [getNumberOfCards, setNumberOfCards] = useState([{ cardNumber: 1, cardQuestion: '', cardAnswer: ''}]);
   const [addLine, setAddLine] = useState<boolean>(false);
+  // temporary
+  const [getCurrentUser, setCurrentUser] = useState<UserDetails>();
+  const useNav = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth(firebaseApp);
+    onAuthStateChanged(auth, (user) => {
+      if (user !== null) {
+        setStatus(true);
+        setCurrentUser(user);
+      } else {  
+        useNav('/', { replace: true });
+      }
+    });
+  }, []);
 
   const submitForm: React.FormEventHandler<HTMLFormElement> = async (e): Promise<void> => {
     e.preventDefault();
@@ -31,11 +50,14 @@ const Generator = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({title: getTitle, allCards: getNumberOfCards, numberOfCards: getNumberOfCards.length}),
+        body: JSON.stringify({uid: getCurrentUser?.uid, title: getTitle, allCards: getNumberOfCards, numberOfCards: getNumberOfCards.length}),
       });
   
       const response = await sender.json();
-      console.log(response);
+      if (response.message) { 
+        setNumberOfCards([{ cardNumber: 1, cardQuestion: '', cardAnswer: ''}])
+        setTitle('');
+      };
     }
   }
 
@@ -86,6 +108,7 @@ const Generator = () => {
               <input 
                 id='titleInputField'
                 type="text" 
+                value={getTitle}
                 placeholder='Whats the title of the flash cards...'
                 onChange={(e) => setTitle(e.target.value)}
                 required

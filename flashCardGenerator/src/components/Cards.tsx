@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { firebaseApp } from "../firebase";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { StatusProps } from "./Interfaces";
 import '../styles/cards.css';
 
 interface Cardss {
@@ -11,24 +15,36 @@ interface Cardss {
   qa_timestamp: string,
 }
 
-const Cards = () => {
+const Cards: React.FC<StatusProps> = ({ setStatus }) => {
   const [cardStatus, setCardStatus] = useState<boolean>(false);
   const [counter, setCounter] = useState<number>(0);
   const [getCards, setCards] = useState<Cardss[]>([]);
   const params = useParams();
+  const useNav = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const getter = await fetch(`http://localhost:2020/getCards?cardId=${params.category_id}`, {
-        method: 'GET',
-      });
-      
-      const response = await getter.json();
-      console.log(response.message);
-      setCards(response.message);
-    })();
+    const auth = getAuth(firebaseApp);
+    onAuthStateChanged(auth, (user) => {
+      if (user !== null) {
+        setStatus(true);
+        getAllCards();
+      } else {
+        useNav('/', { replace: true });
+      }
+    });
+    
   }, []);
 
+  const getAllCards = async (): Promise<void> => {
+    const getter = await fetch(`http://localhost:2020/getCards?cardId=${params.category_id}`, {
+      method: 'GET',
+    });
+    
+    const response = await getter.json();
+    console.log(response.message);
+    setCards(response.message);
+  };
+  
   const nextCard = (): void => {
     if (getCards.length - 1 !== counter) {
       setCounter(counter + 1);
@@ -41,6 +57,8 @@ const Cards = () => {
   return (
     <div id='cardsOuterContainer'>
       <div id="cardsInnerContainer">
+        <div id="cardCategoryName">{params.category_name}</div>
+        
         <div id='cardCounter'>{counter + 1} of {getCards.length}</div>
         
         <div className="card">

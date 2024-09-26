@@ -43,3 +43,4 @@ LFG
   todo (progress) - work with firebase as a baas
 
   setp 26 work with sept 25
+  todo - check auth change para bisan ma referesh ma retain la ghp it state ha iba na component
