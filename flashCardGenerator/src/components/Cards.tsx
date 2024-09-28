@@ -35,6 +35,8 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
     
   }, []);
 
+  console.log(window.innerWidth);
+
   const getAllCards = async (): Promise<void> => {
     const getter = await fetch(`http://localhost:2020/getCards?cardId=${params.category_id}`, {
       method: 'GET',
@@ -61,7 +63,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
         
         <div id='cardCounter'>{counter + 1} of {getCards.length}</div>
         
-        <div className="card">
+        <div id="cardCard">
           {getCards.length !== 0 && getCards[counter].question}
         </div>
         
@@ -70,7 +72,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
           <div id="nextCard" onClick={nextCard}>next card</div>
         </div>
 
-        {cardStatus === true && <div className="card">{getCards[counter].answer}</div>}
+        {cardStatus === true && <div id="cardCard">{getCards[counter].answer}</div>}
       </div>
     </div>
   );

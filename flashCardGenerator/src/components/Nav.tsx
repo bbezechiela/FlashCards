@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import Generator from "./Generator";
 import Categories from "./Categories";
 import Cards from "./Cards";
+import Unknown from "./Unknown";
 import { NavProps } from "./Interfaces";
 import '../styles/nav.css';
 
@@ -39,6 +40,7 @@ const Nav: React.FC<NavProps> = ({ isLoggedIn, setStatus }) => {
           <Route path='generate' element={<Generator setStatus={setStatus} />}/>
           <Route path='categories' element={<Categories setStatus={setStatus} />}/>
           <Route path='categories/:category_name/:category_id' element={<Cards setStatus={setStatus} />}/>
+          <Route path='*' element={<Unknown />}/>
         </Route>    
       </Routes>            
     </BrowserRouter>

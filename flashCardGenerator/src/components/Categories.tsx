@@ -23,7 +23,9 @@ interface Cards {
 const Categories: React.FC<StatusProps> = ({ setStatus }) => {
   const [getCategories, setCategories] = useState<Cards[]>([]); 
   const useNav = useNavigate();
-  
+
+  console.log(window.innerWidth);
+
   useEffect(() => {
     const auth = getAuth(firebaseApp);
     onAuthStateChanged(auth, (user) => {

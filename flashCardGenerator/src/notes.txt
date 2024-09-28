@@ -39,8 +39,16 @@ LFG
   todo (done) - fix ui ha show flash cards pati himo functionality like delete caterogy
 
   sept 25
-  todo (progress) - create login ui
-  todo (progress) - work with firebase as a baas
+  todo (done) - create login ui
+  todo (done) - work with firebase as a baas
 
-  setp 26 work with sept 25
-  todo - check auth change para bisan ma referesh ma retain la ghp it state ha iba na component
+  sept 26 work with sept 25
+  todo (done) - check auth change para bisan ma referesh ma retain la ghp it state ha iba na component
+  
+  sept 27 
+  todo (isipa pa if himo.on)- himo pop up
+  todo (done) - media queries
+  todo - deploy na hehe
+  todo - add ha portfolio
+
+  sept 28 taposa mga todos ha sept 27

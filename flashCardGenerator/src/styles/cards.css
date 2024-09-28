@@ -21,7 +21,7 @@
   color: #0B0B0C;
 }
 
-.card {
+#cardCard {
   min-height: 150px;
   width: 700px;
   font-size: 1.8rem;
@@ -70,4 +70,109 @@
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 500px) {
+  #cardsInnerContainer {
+    width: 400px;
+  }
+
+  #cardCategoryName {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  #cardCounter {
+    font-size: 1.1rem;
+  }
+
+  #cardCard {
+    min-height: 80px;
+    width: 400px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  #cardHandlersContainer {
+    width: 400px;
+  }
+
+  #answerCardHandler, #nextCard {
+    font-size: 0.9rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 767px) {
+  #cardsInnerContainer {
+    width: 500px;
+  }
+
+  #cardCategoryName {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  #cardCounter {
+    font-size: 1.3rem;
+  }
+
+  #cardCard {
+    min-height: 100px;
+    width: 500px;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  #cardHandlersContainer {
+    width: 500px;
+  }
+
+  #answerCardHandler, #nextCard {
+    font-size: 1.1rem;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  #cardsInnerContainer {
+    width: 600px;
+  }
+
+  #cardCategoryName {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  #cardCounter {
+    font-size: 1.4rem;
+  }
+
+  #cardCard {
+    min-height: 130px;
+    width: 600px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    padding: 20px;
+  }
+
+  #cardHandlersContainer {
+    width: 600px;
+  }
+
+  #answerCardHandler, #nextCard {
+    font-size: 1.1rem;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 7px;
+  }
 }

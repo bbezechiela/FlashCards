@@ -26,6 +26,8 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
     });
   }, []);
 
+  console.log(window.innerWidth);
+
   const submitForm: React.FormEventHandler<HTMLFormElement> = async (e): Promise<void> => {
     e.preventDefault();
 
@@ -75,8 +77,6 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
       ))
     );
   }
-
-  console.log(getNumberOfCards);
 
   const addCard = (): void => {
     setAddLine(true);
