@@ -53,6 +53,8 @@ const Hero: React.FC<StatusProps> = ({ setStatus }) => {
     console.log(response.message);
   }
 
+  console.log(window.innerWidth);
+
   return (
     <div id='heroOuterContainer'>
       <div id="heroInnerContainer">
