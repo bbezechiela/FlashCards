@@ -18,11 +18,11 @@ conn.connect((err) => {
   if (err) throw err;
   console.log('connected to mysql');
 
-  const createUserTable = `CREATE TABLE user (uid VARCHAR(255) PRIMARY KEY, user_id int UNIQUE, display_name VARCHAR(255), email VARCHAR(255), profile_path VARCHAR(255))`;
+  const createUserTable = `CREATE TABLE IF NOT EXISTS user (uid VARCHAR(255) PRIMARY KEY, user_id int UNIQUE, display_name VARCHAR(255), email VARCHAR(255), profile_path VARCHAR(255))`;
 
-  const createCategory = `CREATE TABLE category (category_id INT PRIMARY KEY AUTO_INCREMENT, uid VARCHAR(255), category_name VARCHAR(100), number_of_cards INT, category_status VARCHAR(20), category_timestamp DATETIME, FOREIGN KEY (uid) REFERENCES user(uid))`;
+  const createCategory = `CREATE TABLE IF NOT EXISTS category (category_id INT PRIMARY KEY AUTO_INCREMENT, uid VARCHAR(255), category_name VARCHAR(100), number_of_cards INT, category_status VARCHAR(20), category_timestamp DATETIME, FOREIGN KEY (uid) REFERENCES user(uid))`;
 
-  const createCategoryQa = `CREATE TABLE category_qa (qa_id INT PRIMARY KEY AUTO_INCREMENT, category_id INT, uid VARCHAR(255) FOREIGN KEY (uid) REFERENCES user(uid), question VARCHAR(255), answer VARCHAR(255), qa_timestamp DATETIME, FOREIGN KEY (category_id) REFERENCES category(category_id))`;
+  const createCategoryQa = `CREATE TABLE IF NOT EXISTS category_qa (qa_id INT PRIMARY KEY AUTO_INCREMENT, category_id INT, uid VARCHAR(255) FOREIGN KEY (uid) REFERENCES user(uid), question VARCHAR(255), answer VARCHAR(255), qa_timestamp DATETIME, FOREIGN KEY (category_id) REFERENCES category(category_id))`;
 
   conn.query(createUserTable, (err, result) => {
     if (err) throw err;
