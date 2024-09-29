@@ -45,6 +45,7 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
 
     const response = await getter.json();
     setCategories(response.message);
+    console.log(response);
   };
 
   const showCards = async (cardId: number, categoryName: string): Promise<void> => {

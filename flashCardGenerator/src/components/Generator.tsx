@@ -59,6 +59,7 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
       if (response.message) { 
         setNumberOfCards([{ cardNumber: 1, cardQuestion: '', cardAnswer: ''}])
         setTitle('');
+        console.log(response.message);
       };
     }
   }
