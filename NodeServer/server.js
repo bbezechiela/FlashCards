@@ -55,7 +55,8 @@ app.listen(2020, () => console.log('connected to server'));
 
 let corsOptions = {
   origin: 'https://flashcards-uvlr.onrender.com',
-  methods: 'GET, POST, OPTIONS'
+  methods: 'GET, POST, OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
 }
 
 app.use(cors(corsOptions));
@@ -69,6 +70,11 @@ app.use(bodyParser.json());
 //   res.set('Access-Control-Allow-Headers', 'Content-Type');
 //   next();  
 // });
+
+app.use((req, res, next) => {
+  res.set('Cross-Origin-Opener-Policy', 'same-origin');
+  res.set('Cross-Origin-Embedder-Policy', 'require-corp');  
+});
 
 app.post('/createUserLocal', (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
