@@ -7,7 +7,7 @@ import cors from 'cors';
 const app = express();
 
 const conn = mysql.createConnection({
-  host: 'sql304.inifityfree.com',
+  host: 'sql304.infinityfree.com',
   user: 'if0_37410690',
   password: 'hpz9N5aPFLEihF',
   database: 'if0_37410690_flashcards',
