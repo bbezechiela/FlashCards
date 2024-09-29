@@ -48,7 +48,8 @@ LFG
   sept 27 
   todo (isipa pa if himo.on)- himo pop up
   todo (done) - media queries
-  todo - deploy na hehe
+  todo - deploy on vercel hehe
   todo - add ha portfolio
 
   sept 28 taposa mga todos ha sept 27
+  

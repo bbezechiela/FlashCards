@@ -2,14 +2,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql';
 import util from 'util';
+import cors from 'cors';
 
 const app = express();
 
 const conn = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'happyme123',
-  database: 'flashcarddb',
+  host: 'sql304.inifityfree.com',
+  user: 'if0_37410690',
+  password: 'ilovetacloban123',
+  database: 'if0_37410690_flashcards',
   connectionLimit: 10,
 });
 
@@ -31,12 +32,11 @@ conn.connect((err) => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  res.set('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+let corsOption = {
+  origin: 'http://localhost:5173',
+}
+
+app.use(cors(corsOption));
 
 app.use(bodyParser.json());
 
