@@ -18,7 +18,7 @@ conn.connect((err) => {
   if (err) throw err;
   console.log('connected to mysql');
 
-  const createUserTable = `CREATE TABLE user (uid VARCHAR(255) PRIMARY KEY, user_id int AUTO_INCREMENT, display_name VARCHAR(255), email VARCHAR(255), profile_path VARCHAR(255))`;
+  // const createUserTable = `CREATE TABLE user (uid VARCHAR(255) PRIMARY KEY UNIQUE, user_id int AUTO_INCREMENT, display_name VARCHAR(255), email VARCHAR(255), profile_path VARCHAR(255))`;
 
   const createCategory = `CREATE TABLE category (category_id INT PRIMARY KEY AUTO_INCREMENT, uid VARCHAR(255) FOREIGN KEY (uid) REFERENCES user(uid), category_name VARCHAR(100), number_of_cards INT, category_status VARCHAR(20), category_timestamp DATETIME)`;
 
