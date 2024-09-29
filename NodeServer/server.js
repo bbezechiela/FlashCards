@@ -71,11 +71,11 @@ app.use(bodyParser.json());
 //   next();  
 // });
 
-app.use((req, res, next) => {
-  res.set('Cross-Origin-Opener-Policy', 'same-origin');
-  res.set('Cross-Origin-Embedder-Policy', 'require-corp'); 
-  next(); 
-});
+// app.use((req, res, next) => {
+//   res.set('Cross-Origin-Opener-Policy', 'same-origin');
+//   res.set('Cross-Origin-Embedder-Policy', 'require-corp'); 
+//   next(); 
+// });
 
 app.post('/createUserLocal', (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
@@ -86,6 +86,7 @@ app.post('/createUserLocal', (req, res) => {
     if (result.length === 0) {
       conn.query(insertQuery, (err) => {
         if (err) throw err;
+        console.log('user created success fully', result.insertId);
         res.json({message: 'user created localy'});
       })
     }
