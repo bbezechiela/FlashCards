@@ -61,7 +61,7 @@ app.use(cors(corsOption));
 
 app.use(bodyParser.json());
 
-app.post('/createUserLocal', (req, res) => {
+app.post('/createUserLocal', cors(corsOption), (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
 
