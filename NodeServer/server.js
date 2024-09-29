@@ -71,13 +71,13 @@ app.use(bodyParser.json());
 //   next();  
 // });
 
-// app.use((req, res, next) => {
-//   res.set('Cross-Origin-Opener-Policy', 'same-origin');
-//   res.set('Cross-Origin-Embedder-Policy', 'require-corp'); 
-//   next(); 
-// });
+app.use((req, res, next) => {
+  res.set('Cross-Origin-Opener-Policy', 'same-origin');
+  res.set('Cross-Origin-Embedder-Policy', 'require-corp'); 
+  next(); 
+});
 
-app.post('/createUserLocal', (req, res) => {
+app.post('/createUserLocal', (req, res, next) => {
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
 
@@ -88,6 +88,7 @@ app.post('/createUserLocal', (req, res) => {
         if (err) throw err;
         console.log('user created success fully', result.insertId);
         res.json({message: 'user created localy'});
+        next();
       })
     }
   });
