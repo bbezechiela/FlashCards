@@ -39,7 +39,7 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
   }, []);
   
   const getter = async (uid: string): Promise<void> => {
-    const getter = await fetch(`http://localhost:2020/getAllSetCards?uid=${uid}`, {
+    const getter = await fetch(`https://flashcardsapi.onrender.com/getAllSetCards?uid=${uid}`, {
       method: 'GET',
     });
 
@@ -55,7 +55,7 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
     console.log('clicked delete', categoryId);
     e.stopPropagation();
 
-    const deleter = await fetch(`http://localhost:2020/deleteCard?categoryId=${categoryId}`, {
+    const deleter = await fetch(`https://flashcardsapi.onrender.com/deleteCard?categoryId=${categoryId}`, {
       method: 'POST',
     });
 

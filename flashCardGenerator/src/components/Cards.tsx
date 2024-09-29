@@ -38,7 +38,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
   console.log(window.innerWidth);
 
   const getAllCards = async (): Promise<void> => {
-    const getter = await fetch(`http://localhost:2020/getCards?cardId=${params.category_id}`, {
+    const getter = await fetch(`https://flashcardsapi.onrender.com/getCards?cardId=${params.category_id}`, {
       method: 'GET',
     });
     

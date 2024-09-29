@@ -47,7 +47,7 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
     }
 
     if (status) {
-      const sender = await fetch('http://localhost:2020/createCards', {
+      const sender = await fetch('https://flashcardsapi.onrender.com/createCards', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
