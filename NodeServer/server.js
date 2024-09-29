@@ -7,11 +7,16 @@ import cors from 'cors';
 const app = express();
 
 const conn = mysql.createConnection({
-  host: 'sql304.infinityfree.com',
-  user: 'if0_37410690',
-  password: 'hpz9N5aPFLEihF',
-  database: 'if0_37410690_flashcards',
-  connectionLimit: 10,
+  host: 'mysql-388bb08e-imoflashcards.j.aivencloud.com',
+  user: 'avnadmin',
+  password: 'AVNS_a7IiP1LtJ7QM4qAytXl',
+  database: 'defaultdb',
+  port: 14893
+});
+
+conn.connect((err) => {
+  if (err) throw err;
+  console.log('connected to mysql');
 });
 
 const getDate = () => { 
@@ -24,11 +29,6 @@ const getDate = () => {
 
   return currentDate;
 }
-
-conn.connect((err) => {
-  if (err) throw err;
-  console.log('connected to mysql');
-});
 
 app.listen(2020, () => console.log('connected to server'));
 
