@@ -53,20 +53,22 @@ const getDate = () => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-let corsOption = {
+let corsOptions = {
   origin: 'https://flashcards-uvlr.onrender.com',
+  methods: 'GET, POST, OPTIONS'
 }
 
-// app.use(cors(corsOption));
-
-app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', 'https://flashcards-uvlr.onrender.com');
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  res.set('Access-Control-Allow-Headers', 'Content-Type');
-  next();  
-});
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(bodyParser.json());
+
+// app.use((req, res, next) => {
+//   res.set('Access-Control-Allow-Origin', 'https://flashcards-uvlr.onrender.com');
+//   res.set('Access-Control-Allow-Methods', 'GET, POST');
+//   res.set('Access-Control-Allow-Headers', 'Content-Type');
+//   next();  
+// });
 
 app.post('/createUserLocal', (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
