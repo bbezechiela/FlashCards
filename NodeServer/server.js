@@ -57,11 +57,18 @@ let corsOption = {
   origin: 'https://flashcards-uvlr.onrender.com',
 }
 
-app.use(cors(corsOption));
+// app.use(cors(corsOption));
+
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'https://flashcards-uvlr.onrender.com');
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  next();  
+});
 
 app.use(bodyParser.json());
 
-app.post('/createUserLocal', cors(corsOption), (req, res) => {
+app.post('/createUserLocal', (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
 
