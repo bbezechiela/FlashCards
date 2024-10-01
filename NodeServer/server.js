@@ -53,14 +53,20 @@ const getDate = () => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-let corsOptions = {
-  origin: 'https://flashcards-uvlr.onrender.com',
-  methods: 'GET, POST, OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
-}
+// let corsOptions = {
+  // origin: 'https://flashcards-uvlr.onrender.com',
+  // methods: 'GET, POST, OPTIONS',
+  // allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+// }
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+// app.use(cors(corsOptions));
+// app.options('*', cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+}); 
 
 app.use(bodyParser.json());
 
