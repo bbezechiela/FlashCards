@@ -54,11 +54,9 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
   const deleteCard = async (e: any, categoryId: number, index: number): Promise<void> => {
     e.stopPropagation();
 
-    const deleter = await fetch(`https://flashcardsapi.onrender.com/deleteCard?categoryId=${categoryId}`, {
+    await fetch(`https://flashcardsapi.onrender.com/deleteCard?categoryId=${categoryId}`, {
       method: 'POST',
     });
-
-    const response = await deleter.json();
 
     let tempArr = [...getCategories];
     tempArr.splice(index, 1);
