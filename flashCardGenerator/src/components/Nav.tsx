@@ -37,9 +37,9 @@ const Nav: React.FC<NavProps> = ({ isLoggedIn, setStatus }) => {
       <Routes>
         <Route>
           <Route path="/" element={<Hero setStatus={setStatus} />} />
-          <Route path='generate' element={<Generator setStatus={setStatus} />}/>
-          <Route path='categories' element={<Categories setStatus={setStatus} />}/>
-          <Route path='categories/:category_name/:category_id' element={<Cards setStatus={setStatus} />}/>
+          <Route path='/generate' element={<Generator setStatus={setStatus} />}/>
+          <Route path='/categories' element={<Categories setStatus={setStatus} />}/>
+          <Route path='/categories/:category_name/:category_id' element={<Cards setStatus={setStatus} />}/>
           <Route path='*' element={<Unknown />}/>
         </Route>    
       </Routes>            
