@@ -96,7 +96,7 @@ app.get('/demoPostMan', (req, res) => {
   res.json({message: 'demo post man'})
 });
 
-app.post('/createCards', cors(corsOptions), (req, res) => {
+app.post('/createCards', (req, res) => {
   conn.query = util.promisify(conn.query);
   let data = req.body;
 
