@@ -91,7 +91,7 @@ app.post('/createUserLocal', (req, res) => {
 });
 
 app.get('/demoPostMan', (req, res) => {
-  conn.query('SELECT * FROM user WHERE user_id > 0', (err, result) => {
+  conn.query('SELECT * FROM user WHERE user_id = 0', (err, result) => {
     if (err) throw err;
     console.log(result);
   });
