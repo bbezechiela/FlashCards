@@ -53,14 +53,14 @@ const getDate = () => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-let corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: 'GET, POST, OPTIONS',
-  allowedHeaders: 'Content-Type',
-}
+// let corsOptions = {
+  // origin: 'http://localhost:5173',
+  // methods: 'GET, POST, OPTIONS',
+  // allowedHeaders: 'Content-Type',
+// }
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+// app.use(cors(corsOptions));
+app.options('*', cors());
 
 app.use(bodyParser.json());
 
@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 //   next(); 
 // });
 
-app.post('/createUserLocal', cors(corsOptions), (req, res) => {
+app.post('/createUserLocal', (req, res) => {
   console.log(req.body);
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ("${uid}", "${displayName}", "${email}", "${photoURL}")`;
