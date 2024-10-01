@@ -128,7 +128,7 @@ app.get('/getAllSetCards', (req, res) => {
 app.get('/getCards', (req, res) => {
   const cardId = req.query.cardId;
 
-  conn.query(`SELECT * FROM category_QA WHERE category_id = ${cardId}`, (err, result) => {
+  conn.query(`SELECT * FROM category_qa WHERE category_id = ${cardId}`, (err, result) => {
     if (err) throw err;
     for (let i = result.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -142,7 +142,7 @@ app.get('/getCards', (req, res) => {
 app.post('/deleteCard', (req, res) => {
   const categoryId = req.query.categoryId;
 
-  conn.query(`DELETE FROM category_QA WHERE category_id = ${categoryId}`, (err, result) => {
+  conn.query(`DELETE FROM category_qa WHERE category_id = ${categoryId}`, (err, result) => {
     if (err) throw err;
     console.log(result);
 
