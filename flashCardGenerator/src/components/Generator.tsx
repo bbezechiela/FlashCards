@@ -26,7 +26,7 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
     });
 
     (async () => {
-      const getter = await fetch('http://flashcardsapi.onrender.com/demoPostMan');
+      const getter = await fetch('https://flashcardsapi.onrender.com/demoPostMan');
 
       const response = await getter.json();
       console.log(response);
