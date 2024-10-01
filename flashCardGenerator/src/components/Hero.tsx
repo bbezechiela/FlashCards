@@ -36,7 +36,7 @@ const Hero: React.FC<StatusProps> = ({ setStatus }) => {
   }
 
   const createUserLocal = async ({uid, displayName, email, photoURL}: UserDetails): Promise<void> => {
-    const setter = await fetch('https://flashcardsapi.onrender.com/createUserLocal', {
+    await fetch('https://flashcardsapi.onrender.com/createUserLocal', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,12 +48,7 @@ const Hero: React.FC<StatusProps> = ({ setStatus }) => {
         photoURL: photoURL,
       })
     }); 
-
-    const response = await setter.json();
-    console.log(response.message);
   }
-
-  console.log(window.innerWidth);
 
   return (
     <div id='heroOuterContainer'>

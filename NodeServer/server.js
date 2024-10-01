@@ -90,13 +90,6 @@ app.post('/createUserLocal', (req, res) => {
 
 });
 
-app.get('/demoPostMan', (req, res) => {
-  conn.query('SELECT * FROM user WHERE user_id = 0', (err, result) => {
-    if (err) throw err;
-    console.log(result);
-  });
-});
-
 app.post('/createCards', (req, res) => {
   conn.query = util.promisify(conn.query);
   let data = req.body;

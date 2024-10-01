@@ -24,13 +24,6 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
         useNav('/', { replace: true });
       }
     });
-
-    (async () => {
-      const getter = await fetch('https://flashcardsapi.onrender.com/demoPostMan');
-
-      const response = await getter.json();
-      console.log(response);
-    })();
   }, []);
 
   console.log(window.innerWidth);
@@ -49,8 +42,6 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
           break;
         }
       }
-    } else {
-      console.log('title is empty');
     }
 
     if (status) {
@@ -66,7 +57,6 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
       if (response.message) { 
         setNumberOfCards([{ cardNumber: 1, cardQuestion: '', cardAnswer: ''}])
         setTitle('');
-        console.log(response.message);
       };
     }
   }

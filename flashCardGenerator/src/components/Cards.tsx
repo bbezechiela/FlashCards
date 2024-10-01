@@ -35,15 +35,12 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
     
   }, []);
 
-  console.log(window.innerWidth);
-
   const getAllCards = async (): Promise<void> => {
     const getter = await fetch(`https://flashcardsapi.onrender.com/getCards?cardId=${params.category_id}`, {
       method: 'GET',
     });
     
     const response = await getter.json();
-    console.log(response.message);
     setCards(response.message);
   };
   
@@ -51,9 +48,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
     if (getCards.length - 1 !== counter) {
       setCounter(counter + 1);
       setCardStatus(false);
-    } else {
-      console.log('reached');
-    }
+    } 
   }
 
   return (

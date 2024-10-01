@@ -36,6 +36,14 @@
   margin-right: 30px;
 }
 
+#gawakaCards {
+  margin-top: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 500px) {
   #categoryInnerContainer {
     width: 300px;

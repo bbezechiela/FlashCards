@@ -45,7 +45,6 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
 
     const response = await getter.json();
     setCategories(response.message);
-    console.log(response);
   };
 
   const showCards = async (cardId: number, categoryName: string): Promise<void> => {
@@ -53,7 +52,6 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
   }
 
   const deleteCard = async (e: any, categoryId: number, index: number): Promise<void> => {
-    console.log('clicked delete', categoryId);
     e.stopPropagation();
 
     const deleter = await fetch(`https://flashcardsapi.onrender.com/deleteCard?categoryId=${categoryId}`, {
@@ -61,11 +59,9 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
     });
 
     const response = await deleter.json();
-    console.log(response);
 
     let tempArr = [...getCategories];
     tempArr.splice(index, 1);
-    console.log(tempArr);
     setCategories(tempArr);
   }
 
@@ -77,7 +73,7 @@ const Categories: React.FC<StatusProps> = ({ setStatus }) => {
             <div className="categoryName">{e.category_name}</div>
             <FontAwesomeIcon onClick={(element) => deleteCard(element, e.category_id, index)} className="categoryDelete" icon={faTrashCan} style={{color: "#ffffff",}} />
           </div>
-        )): <div>Create cards first :)</div>}
+        )): <div id='gawakaCards'>Gawa ka muna cards :)</div>}
       </div>
     </div>
   );
