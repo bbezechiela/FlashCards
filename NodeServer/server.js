@@ -56,7 +56,7 @@ app.listen(2020, () => console.log('connected to server'));
 let corsOptions = {
   origin: 'http://localhost:5173',
   methods: 'GET, POST, OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+  allowedHeaders: 'Content-Type',
 }
 
 app.use(cors(corsOptions));
@@ -71,6 +71,7 @@ app.use(bodyParser.json());
 // });
 
 app.post('/createUserLocal', cors(corsOptions), (req, res) => {
+  console.log(req.body);
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
 
@@ -89,7 +90,8 @@ app.post('/createUserLocal', cors(corsOptions), (req, res) => {
 });
 
 app.get('/demoPostMan', (req, res) => {
-  res.json({message: 'post man demo'});
+  conn.query('INSERT INTO user ()')  
+
 });
 
 app.post('/createCards', cors(corsOptions), (req, res) => {
