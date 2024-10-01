@@ -100,6 +100,10 @@ app.post('/createUserLocal', (req, res) => {
   });
 });
 
+app.get('/demoPostMan', (req, res) => {
+  res.json({message: 'post man demo'});
+});
+
 app.post('/createCards', (req, res) => {
   conn.query = util.promisify(conn.query);
   let data = req.body;
