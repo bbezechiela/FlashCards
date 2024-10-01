@@ -73,9 +73,9 @@ app.use(bodyParser.json());
 app.post('/createUserLocal', cors(corsOptions), (req, res) => {
   console.log(req.body);
   const {uid, displayName, email, photoURL} = req.body;  
-  const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
+  const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ("${uid}", "${displayName}", "${email}", "${photoURL}")`;
 
-  conn.query(`SELECT uid FROM user WHERE uid = '${uid}'`, (err, result) => {
+  conn.query(`SELECT uid FROM user WHERE uid = "${uid}"`, (err, result) => {
     if (err) throw err;
     if (result.length === 0) {
       conn.query(insertQuery, (err) => {
@@ -83,6 +83,8 @@ app.post('/createUserLocal', cors(corsOptions), (req, res) => {
         console.log('user created success fully', result.insertId);
         res.json({message: 'user created localy'});
       });
+    } else {
+      res.json({message: 'user exist'});
     }
   });
 
