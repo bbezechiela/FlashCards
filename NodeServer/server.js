@@ -54,7 +54,7 @@ const getDate = () => {
 app.listen(2020, () => console.log('connected to server'));
 
 let corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://flashcards-uvlr.onrender.com',
   methods: 'GET, POST, OPTIONS',
   allowedHeaders: 'Content-Type',
 }
@@ -72,15 +72,15 @@ app.use(bodyParser.json());
 
 app.post('/createUserLocal', (req, res) => {
   console.log(req.body);
-  const {uid, displayName, email, photoURL} = req.body;  
-  const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ("${uid}", "${displayName}", "${email}", "${photoURL}")`;
+  let {uid, displayName, email, photoURL} = req.body;
+  displayName = displayName.replace(/'/g, "''");
+  const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', '${displayName}', '${email}', '${photoURL}')`;
 
-  conn.query(`SELECT uid FROM user WHERE uid = "${uid}"`, (err, result) => {
+  conn.query(`SELECT uid FROM user WHERE uid = '${uid}'`, (err, result) => {
     if (err) throw err;
     if (result.length === 0) {
-      conn.query(insertQuery, (err) => {
+      conn.query(insertQuery, (err, result) => {
         if (err) throw err;
-        console.log('user created success fully', result.insertId);
         res.json({message: 'user created localy'});
       });
     } else {
@@ -88,12 +88,13 @@ app.post('/createUserLocal', (req, res) => {
     }
   });
 
-  // res.json({message: 'try la'});
 });
 
 app.get('/demoPostMan', (req, res) => {
-  // conn.query('INSERT INTO user ()')  
-  res.json({message: 'demo post man'})
+  conn.query('SELECT * FROM user WHERE user_id > 0', (err, result) => {
+    if (err) throw err;
+    console.log(result);
+  });
 });
 
 app.post('/createCards', (req, res) => {
