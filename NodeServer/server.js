@@ -60,7 +60,7 @@ let corsOptions = {
 }
 
 app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(bodyParser.json());
 
@@ -92,7 +92,7 @@ app.get('/demoPostMan', (req, res) => {
   res.json({message: 'post man demo'});
 });
 
-app.post('/createCards', (req, res) => {
+app.post('/createCards', cors(corsOptions), (req, res) => {
   conn.query = util.promisify(conn.query);
   let data = req.body;
 
