@@ -162,6 +162,7 @@
     width: 600px;
     font-size: 1.6rem;
     margin-bottom: 15px;
+    text-wrap: wrap;
     padding: 20px;
   }
 
