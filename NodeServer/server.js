@@ -86,7 +86,7 @@ app.post('/createUserLocal', cors(corsOptions), (req, res) => {
     }
   });
 
-  res.json({message: 'try la'});
+  // res.json({message: 'try la'});
 });
 
 app.get('/demoPostMan', (req, res) => {
