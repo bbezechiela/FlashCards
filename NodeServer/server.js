@@ -90,8 +90,8 @@ app.post('/createUserLocal', cors(corsOptions), (req, res) => {
 });
 
 app.get('/demoPostMan', (req, res) => {
-  conn.query('INSERT INTO user ()')  
-
+  // conn.query('INSERT INTO user ()')  
+  res.json({message: 'demo post man'})
 });
 
 app.post('/createCards', cors(corsOptions), (req, res) => {
