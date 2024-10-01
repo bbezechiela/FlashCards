@@ -106,7 +106,7 @@ app.post('/createCards', (req, res) => {
 
     firstQuery.map((e) => {
       for (let i of data.allCards) {
-        conn.query(`INSERT INTO category_QA (category_id, uid, question, answer, qa_timestamp) VALUES (${e}, '${data.uid}', '${i.cardQuestion}', '${i.cardAnswer}', '${getDate()}')`, (err) => {
+        conn.query(`INSERT INTO category_qa (category_id, uid, question, answer, qa_timestamp) VALUES (${e}, '${data.uid}', '${i.cardQuestion}', '${i.cardAnswer}', '${getDate()}')`, (err) => {
           if (err) throw err;
         });
       }
