@@ -53,30 +53,16 @@ const getDate = () => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-// let corsOptions = {
-  // origin: 'https://flashcards-uvlr.onrender.com',
-  // methods: 'GET, POST, OPTIONS',
-  // allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
-// }
+let corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: 'GET, POST, OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+}
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 // app.options('*', cors(corsOptions));
 
-app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.set('Access-Control-Allow-Methods', 'GET, POST');
-  res.set('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}); 
-
 app.use(bodyParser.json());
-
-// app.use((req, res, next) => {
-//   res.set('Access-Control-Allow-Origin', 'https://flashcards-uvlr.onrender.com');
-//   res.set('Access-Control-Allow-Methods', 'GET, POST');
-//   res.set('Access-Control-Allow-Headers', 'Content-Type');
-//   next();  
-// });
 
 // app.use((req, res, next) => {
 //   res.set('Cross-Origin-Opener-Policy', 'same-origin');
@@ -84,7 +70,7 @@ app.use(bodyParser.json());
 //   next(); 
 // });
 
-app.post('/createUserLocal', (req, res) => {
+app.post('/createUserLocal', cors(corsOptions), (req, res) => {
   const {uid, displayName, email, photoURL} = req.body;  
   const insertQuery = `INSERT INTO user (uid, display_name, email, profile_path) VALUES ('${uid}', "${displayName}", '${email}', '${photoURL}')`;
 
