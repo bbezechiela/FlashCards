@@ -34,6 +34,7 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+  text-wrap: wrap;
   padding: 25px;
 }
 
@@ -162,7 +163,6 @@
     width: 600px;
     font-size: 1.6rem;
     margin-bottom: 15px;
-    text-wrap: wrap;
     padding: 20px;
   }
 
