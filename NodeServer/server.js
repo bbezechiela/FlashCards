@@ -24,20 +24,12 @@ conn.connect((err) => {
 
   // const createCategoryQa = `CREATE TABLE IF NOT EXISTS category_qa (qa_id INT PRIMARY KEY AUTO_INCREMENT, category_id INT, uid VARCHAR(255), question VARCHAR(255), answer VARCHAR(255), qa_timestamp DATETIME, FOREIGN KEY (uid) REFERENCES user(uid), FOREIGN KEY (category_id) REFERENCES category(category_id))`;
 
-  // conn.query(createUserTable, (err, result) => {
-  //   if (err) throw err;
-  //   console.log('table user createdd');
-  // });
+  const alterTable = `ALTER TABLE category_qa MODIFY COLUMN question VARCHAR(2000), MODIFY COLUMN answer VARCHAR(2000)`;
 
-  // conn.query(createCategory, (err, result) => {
-  //   if (err) throw err;
-  //   console.log('table user category');
-  // });
-
-  // conn.query(createCategoryQa, (err, result) => {
-  //   if (err) throw err;
-  //   console.log('table user category qa');
-  // });
+  conn.query(alterTable, (err, result) => {
+    if (err) throw err;
+    console.log('table altered');
+  });
 });
 
 const getDate = () => { 

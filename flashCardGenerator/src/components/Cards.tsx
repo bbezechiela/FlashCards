@@ -58,7 +58,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
         
         <div id='cardCounter'>{counter + 1} of {getCards.length}</div>
         
-        <div id="cardCard">
+        <div className="cardCard">
           {getCards.length !== 0 && getCards[counter].question}
         </div>
         
@@ -67,7 +67,7 @@ const Cards: React.FC<StatusProps> = ({ setStatus }) => {
           <div id="nextCard" onClick={nextCard}>next card</div>
         </div>
 
-        {cardStatus === true && <div id="cardCard">{getCards[counter].answer}</div>}
+        {cardStatus === true && <div className="cardCard">{getCards[counter].answer}</div>}
       </div>
     </div>
   );
