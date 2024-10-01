@@ -98,6 +98,8 @@ app.post('/createUserLocal', (req, res) => {
       });
     }
   });
+
+  res.json({message: 'try la'});
 });
 
 app.get('/demoPostMan', (req, res) => {

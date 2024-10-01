@@ -24,6 +24,13 @@ const Generator: React.FC<StatusProps> = ({ setStatus }) => {
         useNav('/', { replace: true });
       }
     });
+
+    (async () => {
+      const getter = await fetch('https://flashcardsapi.onrender.com/demoPostMan');
+
+      const response = await getter.json();
+      console.log(response);
+    })();
   }, []);
 
   console.log(window.innerWidth);
