@@ -53,13 +53,13 @@ const getDate = () => {
 
 app.listen(2020, () => console.log('connected to server'));
 
-// let corsOptions = {
-  // origin: 'http://localhost:5173',
-  // methods: 'GET, POST, OPTIONS',
-  // allowedHeaders: 'Content-Type',
-// }
+let corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: 'GET, POST, OPTIONS',
+  allowedHeaders: 'Content-Type',
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 // app.options('*', cors());
 
 app.use(bodyParser.json());
