@@ -59,7 +59,7 @@ app.listen(2020, () => console.log('connected to server'));
   // allowedHeaders: 'Content-Type',
 // }
 
-app.use(cors);
+app.use(cors());
 // app.options('*', cors());
 
 app.use(bodyParser.json());
