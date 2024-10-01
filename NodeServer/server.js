@@ -54,7 +54,8 @@ const getDate = () => {
 app.listen(2020, () => console.log('connected to server'));
 
 let corsOptions = {
-  origin: 'https://flashcards-uvlr.onrender.com',
+  // https://flashcards-uvlr.onrender.com
+  origin: 'http://localhost:5173',
   methods: 'GET, POST, OPTIONS',
   allowedHeaders: 'Content-Type',
 }
